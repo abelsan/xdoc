@@ -1,0 +1,2 @@
+# to remove all existing containers (not images!) run 
+docker rm $(docker ps -aq)

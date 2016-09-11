@@ -1,0 +1,8 @@
+# Delete every Docker image
+docker rmi $(docker images -q)
+
+// to force
+docker rmi -f $(docker images -q)
+
+# delete single image
+docker rmi abelsan/ginvol

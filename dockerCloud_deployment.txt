@@ -1,0 +1,21 @@
+votinglb:
+  image: dockercloud/haproxy
+  links:
+    - voting
+  ports:
+    - '80:80'
+  roles:
+    - global
+results:
+  image: tutum/results-demo
+  links:
+    - redis
+  ports:
+    - '8000:80'
+voting:
+  image: tutum/voting-demo
+  links:
+    - redis
+  target_num_containers: 1
+redis:
+  image: redis

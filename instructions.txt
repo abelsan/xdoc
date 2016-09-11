@@ -1,0 +1,98 @@
+1) create package.json, make sure to include dependencies
+
+2) create server.js
+
+3) create Dockerfile (touch Dockerfile)
+
+	# image we want to build from, for example 
+	FROM node:argon
+
+	# create app directory
+	RUN mkdir -p /usr/src/app
+	WORKDIR /usr/src/app
+
+	# install app dependencies
+	COPY package.json /usr/src/app/
+	RUN npm install
+
+	# copy code to the container
+	COPY . /usr/src/app	
+
+	// expose the port of your server
+	EXPOSE 3000
+
+	// run app, "npm start" runs "node server.js"
+	CMD [ "npm", "start" ]	
+
+	//------------------------------------
+	//		alternative syntax
+	//------------------------------------	
+
+	# image we want to build from
+	FROM node:6.5.0
+
+	# app directory
+	WORKDIR /app
+
+	# install app dependencies
+	ADD package.json /app/package.json
+	RUN npm install
+
+	# copy code to the container
+	ADD . /app
+
+	// expose the port of your server
+	ENV PORT 3000
+	EXPOSE 3000
+
+	// run app
+	CMD ["node", "server.js"]	
+
+4) build image
+
+	$ docker build -t <your username>/node-web-app .
+
+5) inspect image
+	$ docker images
+	$ docker ps
+
+6) run the image
+	$ docker run -p 49160:3000 -d <your username>/node-web-app
+
+	-d runs the container in detached mode, leaving the container running in the background
+	-p flag redirects a public port to a private port inside the container.
+
+7) print the output
+	# get container id
+	$ docker ps
+
+	# print app output
+	$ docker logs <container id>
+
+	# Example
+	running on http://localhost:3000
+
+8) test - To test your app, get the port of your app that Docker mapped:
+
+	$ docker ps	
+
+	# Example
+	ID 				IMAGE 								COMMAND		...	PORTS
+	ecce33b30ebf 	<your username>/node-web-app:latest	npm start	...	49160->8080	
+
+9) run test
+	$ curl -i localhost:49160
+
+	Hello world
+
+10) command prompt inside container
+	$ docker run -t -i <your username>/<your image name> /bin/bash
+	
+11) stop a container
+	$ docker stop <container id>
+
+
+
+
+
+

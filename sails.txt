@@ -1,0 +1,42 @@
+Sails.JS
+
+cli commands
+------------
+
+
+1) Download from github (I downloaded zip files)
+https://github.com/LearningBoard
+
+2) Unzip files. You should have two folders: node-backend-master, and prototype-master
+
+3) Install grunt globally
+npm install -g grunt-cli
+
+4) Install grunt locally
+npm install grunt --save-dev
+
+5) Open a command window, move to the folder and run npm install (it will take a long time)
+npm install
+
+6) to run the application
+sails lift
+
+
+// -----------------------
+//		Sails notes
+// -----------------------
+
+# install grunt globally
+npm install -g grunt-cli
+
+# install sails
+npm -g install sails
+
+# creates a new application
+$ sails generage new sailsdemo
+
+# to run the new application
+$ sails lift
+
+# API Development w/ Sails.js by Travis Webb
+https://www.youtube.com/watch?v=sEtSTlkKTmY

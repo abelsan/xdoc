@@ -1,0 +1,21 @@
+//	kogs installation
+// -----------------------
+
+# install grunt globally
+npm install -g grunt-cli
+
+# install grunt locally
+npm install grunt --save-dev
+
+# install sails
+npm -g install sails
+
+# ------------------------------
+# copy application files
+# ------------------------------
+
+# install kogs
+npm install
+
+# run the application
+$ sails lift
